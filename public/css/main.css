@@ -3,7 +3,7 @@
     margin-right:0;
 }
 #sidebar-container {
-    min-height: 85vh;   
+    min-height: 80vh;   
     background-color: #333;
     padding: 0;
 }
@@ -43,7 +43,7 @@
 
 .sidebar-separator2 {
     background-color: #333;
-    height: 23vh;
+    height: 30px;
 }
 .logo-separator {
     background-color: #333;    

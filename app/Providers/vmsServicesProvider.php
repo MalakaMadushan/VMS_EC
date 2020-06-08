@@ -13,7 +13,7 @@ class vmsServicesProvider extends ServiceProvider
         $this->app->bind('elections.client', function () {
             $config = [
                 //'base_uri' => env('VMS_API'),
-                'base_uri' => "192.168.1.101:8080/api/",
+                'base_uri' => "192.168.8.175/api/"
             ];
             return new Client($config);
         });

@@ -58,7 +58,7 @@
               <td>{{$data->location}}</td>
               
               <td>
-                <a href=""  type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#viewModal">View</i></a>&nbsp;
+              <a href=""  type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#viewModal_request" data-requestid="{{$data->id}}" >View</i></a>&nbsp;
               </td>
           </tr>
       @endforeach
@@ -66,7 +66,7 @@
   </table>
 
 <!-- Modal -->
-<div class="modal fade"  id="viewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade"  id="viewModal_request" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -79,35 +79,42 @@
         
       <div class="form-group" style="padding-right: 20px; padding-left: 20px; padding-top: 20px;">
         <label for="txt_aplicant_name">අයදුම්කරුගේ නම</label>
-        <input type="text" class="form-control" name="txt_aplicant_name" id="txt_aplicant_name">
+        <!-- <input type="text" class="form-control" name="txt_aplicant_name" id="txt_aplicant_name"> -->
+        <label id="txt_aplicant_name"class="form-control"></label>
+        <!-- <h3 id="idid"></h3> -->
        </div>
 
        <div class="row" style="padding-right: 20px; padding-left: 20px;">
       <div class="form-group" style="padding-right: 20px; padding-left: 20px;">
         <label for="dt_req_date">වාහනය අවශ්‍ය දිනය</label>
-        <input type="date" name="dt_req_date" id="dt_req_date" max="3000-12-31" min="1000-01-01" class="form-control">
+        <!-- <input type="date" name="dt_req_date" id="dt_req_date" max="3000-12-31" min="1000-01-01" class="form-control"> -->
+        <label id="dt_req_date" class="form-control"></label>
         
       </div>
+      </div>
 
-      <div class="form-group" style="padding-right: 20px; padding-left: 20px;">
+      <!-- <div class="form-group" style="padding-right: 20px; padding-left: 20px;">
         <label for="tm_req_time">වේලාව</label>
         <input type="time" name="tm_req_time" id="tm_req_time" class="form-control">
         </div>
-      </div>
+      </div> -->
       <div class="form-group" style="padding-right: 20px; padding-left: 20px;">
         <label for="txt_destination">ගමන් කරන ස්ථානය </label>
-        <input type="text" class="form-control" name="txt_destination" id="txt_destination">
+        <!-- <input type="text" class="form-control" name="txt_destination" id="txt_destination"> -->
+        <label id="txt_destination"class="form-control"></label>
      </div>
      <div class="form-group" style="padding-right: 20px; padding-left: 20px;">
         <label for="txta_duty">ඉටු කිරීමට ඇති රාජකාරියේ ස්භාවය</label>
-        <textarea class="form-control" id="txta_duty"  name="txta_duty" rows="3"></textarea>
+        <!-- <textarea class="form-control" id="txta_duty"  name="txta_duty" rows="3"></textarea> -->
+        <label id="txta_duty"class="form-control"></label>
     </div>
 
     <div class="form-group col-md-6" style="padding-right: 20px; padding-left: 20px;">
             <label for="op_req_duration">අවශ්‍ය කාල පරාසය</label>
-            <select class="form-control" id="op_req_duration" name="op_req_duration">
+            <!-- <select class="form-control" id="op_req_duration" name="op_req_duration">
             <option value="" selected disabled hidden>Choose here</option>
-            </select>
+            </select> -->
+            <label id="op_req_duration"class="form-control" ></label>
             </div>
       </div>
 
@@ -164,60 +171,49 @@
 
 </form>
 
-    @push('scripts')
-      <script>
+<!---------load data to request_details_model------------------------------------------>
+@push('scripts')
+    <script>
+  $('#viewModal_request').on('show.bs.modal', function (event) {
+  
+    var button = $(event.relatedTarget) 
+    var m_id = button.data('requestid') 
+    var modal = $(this)
 
-$( document ).ready(function() {
-    
-    var op=" ";
-   
-        $.ajaxSetup({
+    $.ajaxSetup({
         headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
         });
         $.ajax({
         type:'POST',
-        url:'{!!URL::to('view_request')!!}',
-        // data: $('#CheckVoterForm').serialize(),
-        success:function(data){
-          alert("ok");
-            for(var i=0;i<data.length;i++){
-                
-                op+='<tr>';
-                    op+='<th>{{trans('Year')}}</th><td>'+data[i].aDisID+'</td>';
-                    op+='</tr>';
-                    op+='<tr>';
-                    op+='<th>{{trans('SLIN')}}</th><td>'+data[i].districtNameSI+'</td>';
-                    op+='</tr>';
-                    op+='<tr>';
-                    op+='<th>{{trans('NIC')}}</th><td>'+data[i].districtNameEN+'</td>';
-                    op+='</tr>';
-                    op+='<tr>';
-                    op+='<th>{{trans('Full Name')}}</th><td>'+data[i].districtNameEN+'</td>';
-                    op+='</tr>';
-                    op+='<tr>';
-                    op+='<th>{{trans('Gender')}}</th><td>'+data[i].districtNameEN+'</td>';
-                    op+='</tr>';
-                   
+        url:'/requestdetails_view',
+        data: {m_id:m_id},
 
-                   
-            
-            }
-            $("#reqtable tbody").append(op);
-                
+       
 
+        success:function(Databranch){
+           //alert("okkkk"); 
+           //console.log("ok");
+          // document.getElementById("idid").innerHTML = Databranch[0].id;
+          $('#txt_aplicant_name').text(Databranch[0].name);
+          $('#dt_req_date').text(Databranch[0].need_datetime);
+          $('#txt_destination').text(Databranch[0].location);
+          $('#txta_duty').text(Databranch[0].duty);
+          $('#op_req_duration').text(Databranch[0].duration);
+
+          
         },
-        error:function(){
-        //   alert("no");
+        error:function(Databranch){
+          //console.log("erorr");
+            alert("noo");
 
         }
 
-      });
-      
-    });
-      </script>
+        });
+})
 
+</script>
       @endpush
     </div>
 </div>   

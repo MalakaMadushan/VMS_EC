@@ -27,10 +27,15 @@ Route::get('/dashboard', 'DashboardController@dashboard');
 
 
 Route::get('/recivedrequest', 'RecievedReqController@recievedreq');
+Route::post('/submit_request', 'RequestController@submitrequest');
+Route::post('/requestdetails_view', 'RecievedReqController@requestdetails_view');
+
 
 Route::get('/users', 'UsersController@users');
 Route::get('/agency', 'AgencyController@agency');
 Route::get('/vehicles', 'VehiclesController@vehicle');
 Route::get('/drivers', 'DriversController@drivers');
 
+
+Route::post('/add_drivers', 'DriversController@add_drivers');
 

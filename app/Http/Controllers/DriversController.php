@@ -9,4 +9,33 @@ class DriversController extends Controller
     public function drivers(){
         return view ('pages.drivers');
     }
+
+
+    public function add_drivers(Request $request){
+       
+        
+        $client = resolve('elections.client');
+        $response = $client->request('POST', 'Drivers/PostDrivers',
+        
+        [
+            'headers'=>['content-type'=>'application/json'],
+            'json' => [
+                'name' => $request->txt_drivername,
+                'agency_id'=> '1',
+                'mobile'=>$request->driver_mobile,
+                'address1'=>$request->txt_address1,
+                'address2'=>$request->txt_address2,
+                'nic'=>$request->driver_nic,
+                'dri_licennce'=>$request->driver_license_no
+
+                 ],
+        ]
+    
+    );
+     
+        return response()->json('Successfully added');
+
+
+
+    }
 }

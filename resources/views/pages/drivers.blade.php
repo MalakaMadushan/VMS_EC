@@ -8,7 +8,8 @@
         <strong><span class="fa fa-user fa-fw mr-3"></span>  Add Driver </strong>
         </div>
    <div>
-    <form>
+    <form id="driver_form"  name="driver_form" onSubmit="return false;">
+    {{csrf_field()}}
        <div class="form-group" style="padding-right: 20px; padding-left: 20px; padding-top: 10px;">
          <label for="txt_drivername">Driver Full Name</label>
          <input type="text" class="form-control" name="txt_drivername" id="txt_drivername" placeholder="Enter Driver Name">
@@ -69,12 +70,48 @@
        
         
         <div style="padding-right: 20px; padding-left: 20px;padding-bottom: 20px;">
-         <button type="submit" class="btn btn-primary" id="btn_req_submit" name="btn_req_submit"><span class="fa fa-save fa-fw mr-2"></span>Save </button>
+         <button type="submit" class="btn btn-primary" id="btn_add_driver" name="btn_add_driver"><span class="fa fa-save fa-fw mr-2"></span>Save </button>
         </div>
 
     </form>
 </div>
 </div>
 </div>
+
+
+@push('scripts')
+<script>
+
+$("#btn_add_driver").click(function(){
+    // console.log("ok");
+    alert("btn ok");
+
+    $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+        $.ajax({
+        type:'POST',
+        url:'/add_drivers',
+        data: $('#driver_form').serialize(),
+
+
+        success:function(response){
+           alert("Driver Added Successfully"); 
+            
+        },
+        error:function(response){
+            alert("Please Try again Later");
+
+        }
+    });
+
+});
+</script>
+
+
+@endpush
+
 @endsection
 

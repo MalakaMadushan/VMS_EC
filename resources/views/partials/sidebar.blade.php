@@ -108,7 +108,7 @@
                     <span class="menu-collapsed">Calendar</span>
                 </div>
             </a>
-            <li class="list-group-item sidebar-separator2 menu-collapsed"></li> 
+            <!-- <li class="list-group-item sidebar-separator2 menu-collapsed"></li>  -->
 
             <a href="#" data-toggle="sidebar-colapse" class="bg-dark list-group-item list-group-item-action d-flex align-items-center">
                 <div class="d-flex w-100 justify-content-start align-items-center">

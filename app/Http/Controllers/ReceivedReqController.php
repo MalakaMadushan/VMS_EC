@@ -45,4 +45,25 @@ class RecievedReqController extends Controller
         // return response()->json($data);
    
     }
+
+     //Data load to the model--------------------------------------------------------
+     public function requestdetails_view(Request $request){
+
+        // console.log("controller ok");
+         $client = resolve('elections.client');
+         $responsebranch= $client -> request('GET','request/GetRequestDetails/'.$request->m_id);
+ 
+         $statuscodebranch=$responsebranch->getStatusCode();
+         $bodybranch=$responsebranch->getBody()->getContents();
+ 
+         $Databranch=json_decode($bodybranch);
+ 
+        // $Databranch="okkkkkkkkkkkkkk";
+ 
+         return response()->json($Databranch);
+ 
+ 
+ 
+     }
+ 
 }

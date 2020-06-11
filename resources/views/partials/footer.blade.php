@@ -13,7 +13,7 @@
       </li> -->
     </ul>
     <span class="navbar-text">
-      Developed by CoadAider Team
+     &copy Developed by CodeAider Developer Team in ICT Division of Election Commission
     </span>
   </div>
 </nav>

@@ -67,10 +67,13 @@
   padding-left: 10px;
 }
 
+
 .block {
     display: block;
     width: 100%;
     text-align: center;
   }
   
-  
+  .codeaider{
+      color:blue;
+  }

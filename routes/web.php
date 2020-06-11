@@ -39,3 +39,8 @@ Route::get('/drivers', 'DriversController@drivers');
 
 Route::post('/add_drivers', 'DriversController@add_drivers');
 
+Route::post('/add_agency','AgencyController@add_agency');
+
+Route::put('/update_responce','ResponceController@add_responce');
+Route::put('//update_responce_as_notapproved','ResponceController@update_responce_as_notapproved');
+

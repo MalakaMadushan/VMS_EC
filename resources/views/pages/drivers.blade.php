@@ -50,19 +50,10 @@
         <div class="row" style="padding-right: 20px; padding-left: 20px; padding-top: 10px;">
 
         <div class="form-group col-md-4" style="padding-right: 20px; padding-left: 20px; padding-top: 10px;">
-         <label for="driver_license_no">Driving License Number & Catagory </label>
+         <label for="driver_license_no">Driving License Number  </label>
          <input type="text" class="form-control" name="driver_license_no" id="driver_license_no" placeholder="Enter Your Driving Licence Number">
         </div>
 
-        
-        <div class="form-check form-check-inline" style="padding-right: 20px; padding-left: 20px; padding-top: 20px;">
-         <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-         <label class="form-check-label" for="inlineRadio1">Light Vehicle</label>
-        </div>
-
-        <div class="form-check form-check-inline" style="padding-right: 20px; padding-left: 20px; padding-top: 20px;">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-        <label class="form-check-label" for="inlineRadio2">Heavy Vehicle</label>
        
         </div>
         </div>

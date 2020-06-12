@@ -74,6 +74,111 @@
     text-align: center;
   }
   
-  .codeaider{
-      color:blue;
+  #logindiv{
+      vertical-align: middle;
+      box-sizing: border-box;
+      padding-left: 40%;
+      padding-top: 12%;
+      padding-bottom: 10%;
+      padding-right: 10%;
+      
+     
   }
+  /* login css */
+  .wr-login {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.wr-login input[type=text], .wr-login input[type=password]{
+    border: 1px #d2d2d2 solid;
+    width: 100%;
+    padding: 6px 10px;
+    z-index: 1;
+    -webkit-appearance: none;
+    line-height: 30px;
+    border-radius: 0px;
+}
+.wr-btn {
+    font-weight: normal;
+    font-size: 13px;
+    color: #fff;
+    background: #5d81d2;
+    padding: 10px 10px;
+    display: inline-block;
+    border: none;
+}
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+.boarder-bottom-blue {
+    border-bottom: 2px solid #006596;
+}
+.padding-double {
+    padding: 20px;
+}
+.white {
+    color: #FFF;
+}
+.blue-bg {
+    background-color: #3a9ecf !important;
+}
+.uppercase {
+    text-transform: uppercase;
+}
+.boarder-all {
+    border: 1px solid #d8d8d8;
+    background: #FFF;
+    margin-top: -10px;
+}
+.font-large {
+    font-size: 16px;
+}
+.wr-input-control {
+    margin-bottom: 20px;
+}
+.wr-login {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.wr-btn {
+    font-weight: normal;
+    font-size: 13px;
+    color: #fff;
+    background: #5d81d2;
+    padding: 10px 10px;
+    display: inline-block;
+    border: none;
+}
+.button.grey-bg:hover {
+    background-color: #3A9ECF;
+}
+.wr-btn:hover {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #6b94f1;
+}
+button.grey-bg {
+    background-color: #222222;
+}
+button.font-extra-large {
+    font-size: 20px;
+}
+
+/* footer */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    min-height: 45px;
+    overflow: hidden;
+    color: #cbcbcb;
+    background: #222222;
+    line-height: 35px;
+}
+
+
+
+
+  

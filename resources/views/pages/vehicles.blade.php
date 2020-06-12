@@ -141,10 +141,12 @@ $("#btn_add_vehi").click(function(){
 
         success:function(response){
            alert("Vehicle Added Successfully"); 
+           location.reload();
             
         },
         error:function(response){
             alert("Please Try again Later");
+            location.reload();
 
         }
     });

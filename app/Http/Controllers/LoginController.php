@@ -35,7 +35,7 @@ class LoginController extends Controller
         $body = $response->getBody()->getContents();
         $data = json_decode($body);
 
-        dd($data[0]->id);
+       
         if(!empty($data)) {
             if($data[0]->user_name == $request->inputuser)
             {

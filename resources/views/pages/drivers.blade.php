@@ -99,10 +99,12 @@ $("#btn_add_driver").click(function(){
 
         success:function(response){
            alert("Driver Added Successfully"); 
+           location.reload();
             
         },
         error:function(response){
             alert("Please Try again Later");
+            location.reload();
 
         }
     });

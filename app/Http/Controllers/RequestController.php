@@ -44,7 +44,7 @@ class RequestController extends Controller
             'headers'=>['content-type'=>'application/json'],
             'json' => [
                 'datetime' => $request->dt_apply_date,
-                'user_id' => '101',
+                'user_id' => '104',
                 'branch_id' => $request->op_req_branch
                 
             ],

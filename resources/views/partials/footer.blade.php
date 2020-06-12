@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark footer">
 <!--------Header title & logo----->
   <a class="navbar-brand" href="#">Election Commission - VMS</a>
 

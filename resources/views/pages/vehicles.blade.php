@@ -8,7 +8,8 @@
         <strong><span class="fa fa-car fa-fw mr-3"></span> Add Vehicles </strong>
         </div>
   <div>
-    <form>
+    <form  id="vehi_form" name="vehi_form" onSubmit="return false;">
+    {{csrf_field()}}
     <div class="row" style="padding-right: 20px; padding-left: 20px; padding-top: 10px;">
      <div class="form-group col-md-4" style="padding-right: 20px; padding-left: 20px; padding-top: 10px;">
             <label for="op_vehi_type">Vehicle Type</label>
@@ -111,12 +112,51 @@
         </div>
 
         <div style="padding-right: 20px; padding-left: 20px;padding-bottom: 20px;">
-         <button type="submit" class="btn btn-primary" id="btn_req_submit" name="btn_req_submit"><span class="fa fa-save fa-fw mr-2"></span>Save </button>
+         <button type="submit" value="Submit" class="btn btn-primary" id="btn_add_vehi" name="btn_add_vehi"><span class="fa fa-save fa-fw mr-2"></span>Save </button>
         </div>
        
     </form>
 </div>
 </div>
 </div>
+
+
+@push('scripts')
+<script>
+
+$("#btn_add_vehi").click(function(){
+    // console.log("ok");
+    // alert("btn ok");
+
+    $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+        $.ajax({
+        type:'POST',
+        url:'/addvehicles',
+        data: $('#vehi_form').serialize(),
+
+
+        success:function(response){
+           alert("Vehicle Added Successfully"); 
+            
+        },
+        error:function(response){
+            alert("Please Try again Later");
+
+        }
+    });
+
+});
+</script>
+
+
+@endpush
+
+
+
+
 @endsection
 

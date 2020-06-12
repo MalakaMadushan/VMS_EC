@@ -22,8 +22,8 @@ Route::get('/request', 'RequestController@request');
 
 Route::get('view_request', 'RecievedReqController@view_request');
 
-Route::get('/', 'DashboardController@dashboard');
-Route::get('/dashboard', 'DashboardController@dashboard');
+// Route::get('/', 'DashboardController@dashboard');
+Route::get('/dashboard', 'DashboardController@dashboard')->name('dashbord');
 
 
 Route::get('/recivedrequest', 'RecievedReqController@recievedreq');
@@ -38,4 +38,13 @@ Route::get('/drivers', 'DriversController@drivers');
 
 
 Route::post('/add_drivers', 'DriversController@add_drivers');
+// Route::post('/add_vehicles', 'VehiclesController@add_vehicles');
+
+
+Route::post('/addvehicles', 'VehiclesController@addvehicles');
+
+Route::get('/', 'LoginController@login');
+Route::get('/login', 'LoginController@login')->name('login');
+Route::get('/logout', 'LoginController@logout')->name('logout');
+Route::post('/vmsLogin', 'LoginController@vmslogin');
 

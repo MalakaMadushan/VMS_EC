@@ -89,7 +89,7 @@
 </div>   
 </div>   
 
-<!------------------------------------------ADD request form data to database--------------------------------->
+<!------------------------------------------ADD request form data to database using ajax--------------------------------->
 
 @push('scripts')
 <script>

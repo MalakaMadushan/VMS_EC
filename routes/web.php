@@ -48,3 +48,8 @@ Route::get('/login', 'LoginController@login')->name('login');
 Route::get('/logout', 'LoginController@logout')->name('logout');
 Route::post('/vmsLogin', 'LoginController@vmslogin');
 
+Route::post('/add_agency','AgencyController@add_agency');
+
+Route::put('/update_responce','ResponceController@add_responce');
+Route::put('//update_responce_as_notapproved','ResponceController@update_responce_as_notapproved');
+

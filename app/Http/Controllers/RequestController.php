@@ -44,7 +44,7 @@ class RequestController extends Controller
             'headers'=>['content-type'=>'application/json'],
             'json' => [
                 'datetime' => $request->dt_apply_date,
-                'user_id' => '2',
+                'user_id' => '101',
                 'branch_id' => $request->op_req_branch
                 
             ],
@@ -60,7 +60,7 @@ class RequestController extends Controller
 
     $Datamaxid=json_decode($bodymaxid);
     
-    //call for post requestDetails end point in api-------------------------------------------
+    //call for post requestDetails end point in api to post request details to details table------------------------------------------
     $response2=$client->request('POST','request/PostRequestDetails',
     
             [
@@ -74,6 +74,23 @@ class RequestController extends Controller
                 ],
             ]
         );
+
+
+        //send every entered request to response table using tb_request max_id with default pending status-----------------------------
+        $response3=$client->request('POST','Responce/PostResponceDefault',
+    
+            [
+                'headers'=>['content-type'=>'application/json'],
+                'json'=>[
+                    'req_id'=>$Datamaxid[0]->id,
+                    'status'=>'Pending',
+                    // 'driver_id'=>,
+                    // 'vehicle_id'=>,
+                    
+                ],
+            ]
+        );
+
        
 
         return response()->json('Successfully added');

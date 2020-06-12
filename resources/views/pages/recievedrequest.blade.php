@@ -43,6 +43,7 @@
           <th scope="col">User</th>
           <th scope="col">Branch</th>
           <th scope="col">Location</th>
+          <th scope="col">Status</th>
           <th scope="col">View</th>
          
           </tr>
@@ -56,9 +57,20 @@
               <td>{{$data->name}}</td>
               <td>{{$data->branch}}</td>
               <td>{{$data->location}}</td>
-              
               <td>
-              <a href=""  type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#viewModal_request" data-requestid="{{$data->id}}" >View</i></a>&nbsp;
+                
+              @if (($data->status) ==='Pending')
+                      <button type="button" class="btn btn-sm btn-warning" disabled>{{$data->status}}</button>
+              @elseif (($data->status) ==='Approved')
+                      <button type="button" class="btn btn-sm btn-success" disabled>{{$data->status}}</button>
+              @else
+                      <button type="button" class="btn btn-sm btn-danger" disabled>{{$data->status}}</button>
+              @endif
+                
+              
+              </td>
+              <td>
+              <a href=""  type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal_request" data-requestid="{{$data->id}}" >View</i></a>&nbsp;
               </td>
           </tr>
       @endforeach
@@ -76,7 +88,9 @@
         </button>
       </div>
       <div class="modal-body">
-        
+      
+      <label id="req_id" name="req_id" style="display:none;" class="form-control"></label>
+
       <div class="form-group" style="padding-right: 20px; padding-left: 20px; padding-top: 20px;">
         <label for="txt_aplicant_name">අයදුම්කරුගේ නම</label>
         <!-- <input type="text" class="form-control" name="txt_aplicant_name" id="txt_aplicant_name"> -->
@@ -129,12 +143,12 @@
     <div class="collapse" id="collapsebtn1">
       <div class="card card-body">
         <label for="txt_destination">Driver name </label>
-        <input type="text" class="form-control" name="txt_destination" id="txt_destination">
+        <input type="text" class="form-control" name="txt_driver" id="txt_driver">
 
         <label for="txt_destination">Vehicle Number </label>
-        <input type="text" class="form-control" name="txt_destination" id="txt_destination">
+        <input type="text" class="form-control" name="txt_vehicle" id="txt_vehicle">
         <div style="padding-top: 20px; padding-left: 7px;">
-         <button class="btn btn-primary" type="button">Save </button>
+         <button class="btn btn-success" type="button" id="btn_approve_save">Save </button>
         </div>
       </div>
     </div>
@@ -151,10 +165,10 @@
     
       <div class="collapse" id="collapsebtn2">
         <div class="card card-body">
-          <label for="txt_destination">Reason </label>
-          <textarea class="form-control" id="txta_duty"  name="txta_duty" rows="2"></textarea>
+          <label for="txta_reason">Reason </label>
+          <textarea class="form-control" id="txta_reason"  name="txta_reason" rows="2"></textarea>
           <div style="padding-top: 20px; padding-left: 7px;">
-           <button class="btn btn-primary " type="button">Save </button>
+           <button class="btn btn-danger " type="button" id="btn_not_approve_save">Save </button>
           </div>
         </div>
        
@@ -178,6 +192,7 @@
   
     var button = $(event.relatedTarget) 
     var m_id = button.data('requestid') 
+    $('#req_id').text(m_id);
     var modal = $(this)
 
     $.ajaxSetup({
@@ -212,8 +227,81 @@
 
         });
 })
+//-----------------in the request view model approved process (approve button click event)------------------------------------
+$("#btn_approve_save").click(function(){
+    // console.log("ok");
+    //alert("btn ok");
+  var driver=$('#txt_driver').val();
+  var vehicle=$('#txt_vehicle').val();
+  var m_id=$('#req_id').text();
 
 
+    $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+
+        //alert(m_id);
+        $.ajax({
+        type:'PUT',
+        url:'/update_responce',
+        //data: $('#agency_add_form').serialize(),
+        data: {m_id:m_id,driver:driver,vehicle:vehicle},
+
+        success:function(response){
+           alert("responce updated Successfully"); 
+           location.reload();
+            
+        },
+        error:function(response){
+            alert("Please Try again Later");
+            location.reload();
+
+        }
+    });
+
+});
+
+
+
+//-----------------in the request view model NOT approved process (not approve button click event)------------------------------------
+$("#btn_not_approve_save").click(function(){
+    // console.log("ok");
+    //alert("btn ok");
+  var reason=$('#txta_reason').val();
+  var m_id=$('#req_id').text();
+
+
+    $.ajaxSetup({
+        headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+        });
+
+        //alert(m_id);
+        $.ajax({
+        type:'PUT',
+        url:'/update_responce_as_notapproved',
+        //data: $('#agency_add_form').serialize(),
+        data: {m_id:m_id,reason:reason},
+
+        success:function(response){
+           alert("responce updated Successfully"); 
+           location.reload();
+            
+        },
+        error:function(response){
+            alert("Please Try again Later");
+            location.reload();
+        }
+    });
+
+});
+
+$(document).ready(function(){
+  $('#mdatatable').DataTable();
+})
 </script>
       @endpush
     </div>

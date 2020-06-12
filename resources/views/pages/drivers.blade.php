@@ -84,7 +84,7 @@
 
 $("#btn_add_driver").click(function(){
     // console.log("ok");
-    alert("btn ok");
+    //alert("btn ok");
 
     $.ajaxSetup({
         headers: {

@@ -78,11 +78,13 @@ $("#btn_agency_submit").click(function(){
 
 
         success:function(response){
-           alert("Agency Added Successfully"); 
+           alert("Agency Added Successfully");
+           location.reload(); 
             
         },
         error:function(response){
             alert("Please Try again Later");
+            location.reload();
 
         }
     });

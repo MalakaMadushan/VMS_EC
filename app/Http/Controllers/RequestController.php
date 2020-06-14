@@ -14,7 +14,6 @@ class RequestController extends Controller
         // $out = array_values($tbl);
         // $ff=json_encode($out);
         // dd($ff);
-
         $client = resolve('elections.client');
         $responsebranch= $client -> request('GET','branch/GetAll');
 
@@ -41,7 +40,10 @@ class RequestController extends Controller
         //$tbl=array('id'=>1114,'datetime'=>2015-05-18,'user_id'=>1111,'branch_id'=>1111);
         //$out = array_values($tbl);
         //$jason=json_encode($tbl);
-    
+       
+        $value = $request->session()->get('users');
+        $value2=$value[0]->id;
+
         $client = resolve('elections.client');
         $response = $client->request('POST', 'request/PostRequest',
         
@@ -49,7 +51,7 @@ class RequestController extends Controller
             'headers'=>['content-type'=>'application/json'],
             'json' => [
                 'datetime' => $request->dt_apply_date,
-                'user_id' => '101',
+                'user_id' => $value2,
                 'branch_id' => $request->op_req_branch
                 
             ],

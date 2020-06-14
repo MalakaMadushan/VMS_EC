@@ -115,11 +115,13 @@
        
 
         success:function(response){
-           alert("1 record added"); 
+           alert("1 record added");
+           location.reload(); 
             
         },
         error:function(response){
             alert("error");
+            location.reload();
 
         }
 

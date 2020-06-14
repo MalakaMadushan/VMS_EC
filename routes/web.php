@@ -53,3 +53,6 @@ Route::post('/add_agency','AgencyController@add_agency');
 Route::put('/update_responce','ResponceController@add_responce');
 Route::put('//update_responce_as_notapproved','ResponceController@update_responce_as_notapproved');
 
+Route::post('/add_user', 'UsersController@add_users');
+
+

@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Session;
 
 class VehiclesController extends Controller
 {
-    public function vehicle(){
+    public function vehicle(Request $request){
+        if ($request->session()->has('users')) {
         return view ('pages.vehicles');
+        }
+        else{
+            return view('Auth.login');
+        }
     }
 
     public function addvehicles(Request $request){

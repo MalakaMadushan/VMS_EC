@@ -5,11 +5,11 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 //use Redirect,Response;
-//use Session;
+use Session;
 
 class RecievedReqController extends Controller
 {
-    public function recievedreq(){
+    public function recievedreq(Request $request){
         //$client=new \GuzzleHttp\Client();
         //$responseDist = $client->get('http://192.168.1.110:8081/api/ADdistrict/Get');
 
@@ -21,8 +21,12 @@ class RecievedReqController extends Controller
         
         $DataDist = json_decode($bodyDist);
         // dd($DataDist);
-        
+        if ($request->session()->has('users')) {
         return view('pages.recievedrequest')->with('Data',$DataDist);
+        }
+        else{
+            return view('Auth.login');
+        }
         
         
 

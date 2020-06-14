@@ -3,10 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
 
 class UsersController extends Controller
 {
-    public function users(){
+    // public function users2(Request $request){
+    //     if ($request->session()->has('users')) {
+    //     return view ('pages.users');
+    //     }
+    //     else{
+    //         return view('Auth.login');
+    //     }
+    // }
+    
+    public function users(Request $request){
         $client = resolve('elections.client');
         $responsebranch= $client -> request('GET','branch/GetAll');
 
@@ -15,9 +25,15 @@ class UsersController extends Controller
 
         $Databranch=json_decode($bodybranch);
 
+        if ($request->session()->has('users')) {
 
         return view('pages.users')->with('Data',$Databranch);
-        
+        }
+
+        else{
+                    return view('Auth.login');
+                }
+
     }
 
 
@@ -44,4 +60,5 @@ class UsersController extends Controller
         );
         return response()->json('Successfully added');
     }
+
 }

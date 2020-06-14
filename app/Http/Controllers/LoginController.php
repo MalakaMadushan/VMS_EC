@@ -16,7 +16,7 @@ class LoginController extends Controller
     public function logout()
     {
         Session::forget('users');
-        return redirect()->route('dashbord');
+        return redirect()->route('login');
 
     }
 

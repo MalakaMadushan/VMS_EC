@@ -4,10 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Session;
 
 class RequestController extends Controller
 {
-    public function request()
+    public function request(Request $request)
     {
         // $tbl=array('id'=>43,'datetime'=>2015-05-14,'user_id'=>153,'branch_id'=>14);
         // $out = array_values($tbl);
@@ -22,8 +23,12 @@ class RequestController extends Controller
 
         $Databranch=json_decode($bodybranch);
 
-
+        if ($request->session()->has('users')) {
         return view('pages.request')->with('Data',$Databranch);
+        }
+        else{
+            return view('Auth.login');
+        }
     }
 
     public function submitrequest(Request $request){

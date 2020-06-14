@@ -3,7 +3,11 @@
 
 @section('content')
         
-<div class="container-fluid" style="padding-top: 30px; padding-left: 20px; padding-bottom: 30px;">
+<div class="container-fluid" style="padding-top: 30px; padding-left: 20px; padding-bottom: 50px;">
+
+        @php 
+        $user = session()->get('user'); 
+         @endphp
 <div class="card">
         <div class="card-header" style="text-align-center">
         <strong> <span class="fa fa-plus fa-fw mr-3"></span>  Add User</strong> 

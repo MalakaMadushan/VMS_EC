@@ -3,13 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
 
 
 class DashboardController extends Controller
+
 {
-   public function dashboard()
+
+   public function dashboard(Request $request)
    {
-       
-      return view('pages.dashboard');
+   
+      if ($request->session()->has('users')) {
+         return view('pages.dashboard');
+     }
+      else {
+         return view('Auth.login');
+      }
    }
 }

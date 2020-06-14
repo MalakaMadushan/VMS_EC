@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Session;
 
 class DriversController extends Controller
 {
-    public function drivers(){
+    public function drivers(Request $request){
+        if ($request->session()->has('users')) {
         return view ('pages.drivers');
+        }
+        else{
+            return view('Auth.login');
+        }
     }
 
 

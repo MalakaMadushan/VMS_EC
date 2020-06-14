@@ -4,12 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Session;
 
 
 class AgencyController extends Controller
 {
-    public function agency(){
+    public function agency(Request $request){
+        if ($request->session()->has('users')) {
         return view ('pages.agency');
+        }
+        else{
+            return view('Auth.login');
+        }
     }
 
     //post agency added form data to database-------------------------

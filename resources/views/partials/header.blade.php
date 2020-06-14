@@ -1,5 +1,10 @@
 <!-- Bootstrap NavBar -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+
+                  @php 
+                  $user = session()->get('users'); 
+                  @endphp
+
   <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,6 +12,9 @@
     <img src="images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
     <span class="menu-collapsed">ECVMS</span>
   </a>
+
+
+
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       
@@ -26,4 +34,14 @@
       
     </ul>
   </div>
+  <div class="nav_right">
+       @if(!empty($user))
+       <a class="btn btn-sm btn-light" ><i class="fa fa-user" aria-hidden="true"></i>&nbsp;{{$user[0]->user_name}}</a>
+     
+      <a class="btn btn-sm btn-light" href="{!! url('/logout') !!}"><i class="fa fa-sign-out" ></i>&nbsp;Sign Out</a>
+      @else
+        <a class="btn btn-sm btn-light" href="{!! url('/login') !!}"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Sign In</a>
+      @endif
+  </div>
+
 </nav><!-- NavBar END -->

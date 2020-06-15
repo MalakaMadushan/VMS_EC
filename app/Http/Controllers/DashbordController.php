@@ -13,11 +13,21 @@ class DashboardController extends Controller
    public function dashboard(Request $request)
    {
    
-      if ($request->session()->has('users')) {
-         return view('pages.dashboard');
-     }
-      else {
-         return view('Auth.login');
-      }
+      $client = resolve('elections.client');
+      $responseRequest = $client->request('GET','request/Getrequest');
+      
+       $statusCoderequest = $responseRequest->getStatusCode();
+       $bodyrequest = $responseRequest->getBody()->getContents();
+       
+       $Datarequest = json_decode($bodyrequest);
+
+      // dd($Datarequest);
+       if ($request->session()->has('users')) {
+       return view('pages.dashboard')->with('Data',$Datarequest);
+       }
+       else{
+           return view('Auth.login');
+       }
+     
    }
 }

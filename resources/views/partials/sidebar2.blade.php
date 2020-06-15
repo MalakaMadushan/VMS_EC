@@ -69,37 +69,7 @@
                 <small>OPTIONS</small> -->
             </li>
             <!-- /END Separator -->
-
-            <a href="{!! url('/recivedrequest') !!}" class="bg-dark list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-car fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Recieved Request</span>
-                </div>
-            </a>
-            <a href="{!! url('/users') !!}" class="bg-dark list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-user fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Users</span>
-                </div>
-            </a>
-            <a href="{!! url('/agency') !!}" class="bg-dark list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-home fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Agency</span>
-                </div>
-            </a>
-            <a href="{!! url('/vehicles') !!}" class="bg-dark list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-car fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Vehicles</span>
-                </div>
-            </a>
-            <a href="{!! url('/drivers') !!}" class="bg-dark list-group-item list-group-item-action">
-                <div class="d-flex w-100 justify-content-start align-items-center">
-                    <span class="fa fa-group fa-fw mr-3"></span>
-                    <span class="menu-collapsed">Drivers </span>
-                </div>
-            </a>
+           
             <!-- Separator without title -->
             <!-- <li class="list-group-item sidebar-separator menu-collapsed"></li>             -->
             <!-- /END Separator -->

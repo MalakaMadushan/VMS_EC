@@ -14,7 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/dataTables.bootstrap4.min.css">
-</head>
+
+   </head>
 <body> 
 
     <!----javascript in boostrap--->
@@ -43,9 +44,13 @@
                 <script src="//code.jquery.com/jquery.js"></script>
                 <!-- DataTables -->
                  <script src="//cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+                 <script src="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.20/js/dataTables.bootstrap.min.js"></script>
                  <!-- Bootstrap JavaScript -->
                  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+                 
                  <!-- App scripts -->
+               
+
                  @stack('scripts')
             </div>
 

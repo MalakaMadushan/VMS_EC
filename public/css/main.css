@@ -176,15 +176,29 @@ button.font-extra-large {
     background: #222222;
    
 }
+/* side bar */
+
 
 /* nav bar  */
 
 .nav_right {
-    float: right !important;
-   
-    
+    float: right !important;    
 }
 
+.card {
+    margin-bottom: 50px;
+}
+
+/* data table */
+.table {
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-top: 20px;
+}
+
+.reqtbl {
+    max-width: max-content;
+}
 
 
 

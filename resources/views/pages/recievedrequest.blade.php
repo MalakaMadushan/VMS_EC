@@ -2,40 +2,16 @@
 @section('title',"RecievedRequest page")
 
 @section('content')
+
         
 <div class="container-fluid" style="padding-top: 30px; padding-left: 20px; padding-bottom: 30px;">
-<div class="card">
+<div class="card" >
   <div class="card-header" style="text-align-center">
-  
-  <strong> රාජකාරි ගමන් යාම සඳහා වාහනයක් ඉල්ලුම් කිරීම</strong>
-      
+    <strong> රාජකාරි ගමන් යාම සඳහා වාහනයක් ඉල්ලුම් කිරීම</strong>
   </div>
   <div>
     <form>
-        <!-- drop down -->
-        <div class="row">
-        <div class="input-group mb-4" style="padding-right: 20px; padding-left: 20px; padding-top: 20px;" >
-                <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                <option selected>Choose Status...</option>
-                <option value="1">Pending</option>
-                <option value="2">Approve</option>
-                <option value="3">Reject</option>
-                </select>
-                <!-- <div class="input-group-append">
-                <button class="btn btn-outline-secondary" type="button">Button</button>
-                </div> -->
-        </div>
-        </div>
-
-
-         <!-- drop down end -->
-    <div style="padding-right: 20px; padding-left: 20px;padding-bottom: 20px;">
-    <button type="submit" class="btn btn-primary">Request Vehicle</button>
-    </div>
-
-    
-<!--  -->
-<table class="table " id="mdatatable">
+        <table class="table reqtbl" id="mdatatable">
       <thead class="thead-dark">
           <tr>
           <th scope="col">ID</th>
@@ -76,6 +52,7 @@
       @endforeach
       </tbody>
   </table>
+  
 
 <!-- Modal -->
 <div class="modal fade"  id="viewModal_request" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -304,6 +281,8 @@ $(document).ready(function(){
 })
 </script>
       @endpush
+
+      
     </div>
 </div>   
 </div>   

@@ -31,9 +31,11 @@
             <label for="op_user_role">User Role</label>
             <select class="form-control" id="op_user_role" name="op_user_role">
             <option value="" selected disabled hidden>Choose here</option>
-            <option value="1">Administrator</option>
-            <option value="2">Chief Clark</option>
-            <option value="3">User</option>
+            
+            @foreach($Data2 as $data2)
+            <option value="{{$data2->id}}">{{$data2->name}}</option>
+            @endforeach
+
             </select>
         </div>
 

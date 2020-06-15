@@ -22,12 +22,19 @@ class UsersController extends Controller
 
         $statuscodebranch=$responsebranch->getStatusCode();
         $bodybranch=$responsebranch->getBody()->getContents();
-
         $Databranch=json_decode($bodybranch);
+
+
+        $responseUserRoles= $client -> request('GET','UserRoles/GetUserRoles');
+
+        $statuscodeUserRoles=$responseUserRoles->getStatusCode();
+        $bodyUserRoles=$responseUserRoles->getBody()->getContents();
+        $DataUserRoles=json_decode($bodyUserRoles);
+
 
         if ($request->session()->has('users')) {
 
-        return view('pages.users')->with('Data',$Databranch);
+        return view('pages.users')->with('Data',$Databranch)->with('Data2',$DataUserRoles);
         }
 
         else{

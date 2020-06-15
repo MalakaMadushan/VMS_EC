@@ -21,14 +21,21 @@
     <!----javascript in boostrap--->
     <script src="js/app.js"></script>
     <script src="js/main.js"></script>
-
+                @php 
+                  $user = session()->get('users'); 
+                @endphp
 
             <!----------include side bar--------->
             @include('partials.header')
             <!-----------include header bar------>
+            @if(($user[0]->role_id)<'3')
             @include('partials.sidebar')
+            @endif
         
-        
+            @if(($user[0]->role_id)=='3')
+            @include('partials.sidebar2')
+            @endif
+
             <div class="col">
                 <!----include main responsible content---->
                 @yield('content')

@@ -5,6 +5,10 @@
 
 @section('content')
 
+  @php 
+    $user = session()->get('users'); 
+  @endphp
+
 <div class="container-fluid" style="padding-top: 30px; padding-left: 20px; padding-bottom: 30px;">
 <div class="card">
   <div class="card-header" style="text-align-center">
@@ -17,7 +21,8 @@
     {{csrf_field()}}
     <div class="form-group" style="padding-right: 20px; padding-left: 20px; padding-top: 20px;">
         <label for="txt_aplicant_name">අයදුම්කරුගේ නම</label>
-        <input type="text" class="form-control" name="txt_aplicant_name" id="txt_aplicant_name" required>
+        <label class="form-control" name="txt_aplicant_name" id="txt_aplicant_name">{{$user[0]->name}}</label>
+        <!-- <input type="text" class="form-control" name="txt_aplicant_name" id="txt_aplicant_name" required> -->
         
     </div>
     <div class="row" style="padding-right: 20px; padding-left: 20px;">
@@ -34,7 +39,7 @@
 
         <div class="form-group col-md-4" style="padding-right: 20px; padding-left: 20px;">
             <label for="op_req_duration">අවශ්‍ය කාල පරාසය</label>
-            <input type="text" name="op_req_duration" id="op_req_duration" class="form-control">
+            <input type="text" name="op_req_duration" id="op_req_duration" class="form-control" placeholder="EX: 1hr/2hr/8hr/1day/2days/3days">
             <!-- <select class="form-control" id="op_req_duration" name="op_req_duration">
             <option value="" selected disabled hidden>Choose here</option>
             <option>පැය 1</option>
@@ -77,8 +82,8 @@
 
     <div class="form-group" style="padding-right: 20px; padding-left: 20px;">
     <label for="dt_apply_date">අයදුම් කරන දිනය හා වේලාව</label>
-        <input type="datetime-local" name="dt_apply_date" id="dt_apply_date" value="" max="3000-12-31" min="1000-01-01" class="form-control">
-        </div>
+        <input type="datetime-local" name="dt_apply_date" id="dt_apply_date" value="" max="3000-12-31" min="1000-01-01" class="form-control"> 
+    </div>
     
     </div>
     <div style="padding-right: 20px; padding-left: 20px;padding-bottom: 20px;">
@@ -96,7 +101,7 @@
     
     let today = new Date();
     //document.querySelector("#dt_apply_date").value = today;
-   // document.querySelector("#dt_apply_date").valueAsDate = new Date();
+    document.querySelector("#dt_apply_date").valueAsDate = new Date();
 
     //btn request-------------------------------------------------
 

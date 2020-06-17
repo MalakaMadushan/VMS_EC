@@ -43,7 +43,6 @@ class RequestController extends Controller
        
         $value = $request->session()->get('users');
         $value2=$value[0]->id;
-
         $client = resolve('elections.client');
         $response = $client->request('POST', 'request/PostRequest',
         

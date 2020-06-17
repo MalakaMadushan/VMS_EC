@@ -55,7 +55,7 @@ class RecievedReqController extends Controller
 
         // console.log("controller ok");
          $client = resolve('elections.client');
-         $responsebranch= $client -> request('GET','request/GetRequestDetails/'.$request->m_id);
+         $responsebranch= $client -> request('GET','request/GetRequestDetailsByReqId/'.$request->m_id);
  
          $statuscodebranch=$responsebranch->getStatusCode();
          $bodybranch=$responsebranch->getBody()->getContents();

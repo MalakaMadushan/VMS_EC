@@ -10,7 +10,7 @@
   </button>
   <a class="navbar-brand" href="{!! url('/dashboard') !!}">
     <img src="images/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-    <span class="menu-collapsed">ECVMS</span>
+    <span class="menu-collapsed">Election Commission Vehicle Management Sysytem - ECVMS</span>
   </a>
 
 

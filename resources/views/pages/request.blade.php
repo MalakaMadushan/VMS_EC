@@ -99,9 +99,9 @@
 @push('scripts')
 <script>
     
-    let today = new Date();
+    //let today = new Date();
     //document.querySelector("#dt_apply_date").value = today;
-    // document.querySelector("#dt_apply_date").valueAsDate = new Date();
+    //document.querySelector("#dt_apply_date").valueAsDate = new Date();
 
     //btn request-------------------------------------------------
 

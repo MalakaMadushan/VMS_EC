@@ -24,6 +24,7 @@ Route::get('view_request', 'RecievedReqController@view_request');
 
 // Route::get('/', 'DashboardController@dashboard');
 Route::get('/dashboard', 'DashboardController@dashboard')->name('dashbord');
+Route::get('/dashboard_load', 'DashboardController@dashboard_load')->name('dashboard_load');
 
 
 Route::get('/recivedrequest', 'RecievedReqController@recievedreq');
@@ -51,8 +52,9 @@ Route::post('/vmsLogin', 'LoginController@vmslogin');
 Route::post('/add_agency','AgencyController@add_agency');
 
 Route::put('/update_responce','ResponceController@add_responce');
-Route::put('//update_responce_as_notapproved','ResponceController@update_responce_as_notapproved');
+Route::put('/update_responce_as_notapproved','ResponceController@update_responce_as_notapproved');
 
 Route::post('/add_user', 'UsersController@add_users');
+Route::post('/responcedetails_view', 'DashboardController@responcedetails_view');
 
 

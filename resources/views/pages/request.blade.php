@@ -101,12 +101,12 @@
     
     let today = new Date();
     //document.querySelector("#dt_apply_date").value = today;
-    document.querySelector("#dt_apply_date").valueAsDate = new Date();
+    // document.querySelector("#dt_apply_date").valueAsDate = new Date();
 
     //btn request-------------------------------------------------
 
     $("#btn_req_submit").click(function () {
-       // alert("okkkk");
+        //alert("okkkk");
        $.ajaxSetup({
         headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

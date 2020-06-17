@@ -3,9 +3,20 @@
     margin-right:0;
 }
 #sidebar-container {
+    /* position: fixed; */
+    /* position: sticky; top: 0px; */
+    display: flex;
+    overflow-y: auto;
     min-height: 80vh;   
     background-color: #333;
     padding: 0;
+}
+/*  */
+
+
+.header{
+    position: sticky; top: 0px;
+    
 }
 
 /* Sidebar sizes when expanded and expanded */
@@ -18,7 +29,8 @@
 
 /* Menu item*/
 #sidebar-container .list-group a {
-    height: 60px;
+    
+    height: 61px;
     color: white;
 }
 
@@ -187,18 +199,18 @@ button.font-extra-large {
 
 .card {
     margin-bottom: 50px;
+    
 }
 
 /* data table */
 .table {
-    margin-left: 60px;
-    margin-right: 60px;
-    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+}
+.tblform{
+    padding: 20px;
 }
 
-.reqtbl {
-    max-width: max-content;
-}
 
 
 

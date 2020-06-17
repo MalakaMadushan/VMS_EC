@@ -4,13 +4,13 @@
 @section('content')
 
         
-<div class="container-fluid" style="padding-top: 30px; padding-left: 20px; padding-bottom: 30px;">
+<div class="container-fluid">
 <div class="card" >
   <div class="card-header" style="text-align-center">
     <strong> රාජකාරි ගමන් යාම සඳහා වාහනයක් ඉල්ලුම් කිරීම</strong>
   </div>
   <div>
-    <form>
+    <form class="tblform">
         <table class="table reqtbl" id="mdatatable">
       <thead class="thead-dark">
           <tr>
@@ -36,11 +36,11 @@
               <td>
                 
               @if (($data->status) ==='Pending')
-                      <button type="button" class="btn btn-sm btn-warning" disabled>{{$data->status}}</button>
+                      <button type="button" class="btn btn-sm btn-warning" disabled>{{$data->status}}&nbsp;&nbsp;&nbsp;</button>
               @elseif (($data->status) ==='Approved')
                       <button type="button" class="btn btn-sm btn-success" disabled>{{$data->status}}</button>
               @else
-                      <button type="button" class="btn btn-sm btn-danger" disabled>{{$data->status}}</button>
+                      <button type="button" class="btn btn-sm btn-danger" disabled>{{$data->status}}&nbsp;&nbsp;&nbsp;</button>
               @endif
                 
               

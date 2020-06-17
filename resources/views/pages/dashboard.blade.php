@@ -57,36 +57,11 @@
         
         </div>
         
-          <!-- <div class="col-md-1"></div>
-          <div class="card col-md-2 text-white bg-dark " style="width: 18rem;">
-             <div class="card-body">
-                <h5 class="card-title">Pending Request</h5>
-                <h1> 5/16</h1>
-          </div>
-          </div>
-          <div class="col-md-1"></div>
-          <div class="card col-md-2 text-white bg-success" style="width: 18rem;">
-             <div class="card-body">
-                <h5 class="card-title">Approved Request</h5>
-                <h1> 5/16</h1>
-          </div>
-          </div>
-          <div class="col-md-1"></div>
-          <div class="card col-md-2 text-white bg-danger" style="width: 18rem;">
-             <div class="card-body">
-                <h5 class="card-title">Rejected Requests</h5>
-                <h1> 5/16</h1>
-          </div>
-          </div>
-          <div class="col-md-1"></div>
-        </div> -->
-        
-       
-
+          <!-- dashbord table -->
 <div class="container-fluid" style="padding-top: 30px; padding-left: 20px; padding-bottom: 30px;">
 <div class="card">
   <div class="card-header" style="text-align-center">
-  <strong> රාජකාරි ගමන් යාම සඳහා වාහනයක් ඉල්ලුම් කිරීම</strong>  
+  <strong> රාජකාරි කටයුතු වෙනුවෙන් ලැබුණ වාහන ඉල්ලීම් </strong>  
   </div>
     
 
@@ -94,7 +69,7 @@
 <form class="tblform">
 
 <!--------------------------------table----------------------------------------->
-<table class="table " id="mdatatable">
+<table class="table reqtbl " id="mdatatable">
       <thead class="thead-dark">
           <tr>
           
@@ -181,6 +156,11 @@
    </div>
  </div>
 </div>
+
+
+
+
+
 
 </form>
 
@@ -282,6 +262,7 @@ $('#viewModal_requestByUser').on('show.bs.modal', function (event) {
 
       });
 });
+
 
 
 

@@ -1,5 +1,5 @@
 <!-- Bootstrap NavBar -->
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark ">
 
                   @php 
                   $user = session()->get('users'); 

@@ -119,8 +119,9 @@
    
     <div class="collapse" id="collapsebtn1">
       <div class="card card-body">
-        <label for="txt_destination">Driver name </label>
+        <label for="txt_driver">Driver name </label>
         <input type="text" class="form-control" name="txt_driver" id="txt_driver">
+        <!-- <label id="txt_driver"class="form-control" ></label> -->
 
         <label for="txt_destination">Vehicle Number </label>
         <input type="text" class="form-control" name="txt_vehicle" id="txt_vehicle">
@@ -193,7 +194,8 @@
           $('#txt_destination').text(Databranch[0].location);
           $('#txta_duty').text(Databranch[0].duty);
           $('#op_req_duration').text(Databranch[0].duration);
-
+          //$('#txt_driver').text(Datadriversname[0].name);
+          
           
         },
         error:function(Databranch){

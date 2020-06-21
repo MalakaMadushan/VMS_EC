@@ -17,7 +17,7 @@
           <div class="card  text-white bg-primary " style="width: 14rem;">
              <div class="card-body">
                 <h5 class="card-title">All Requests</h5>
-                <h1> 5/16</h1>
+                <h1 id="req_all"> 0</h1>
              </div>
           </div>
         </a>
@@ -27,7 +27,7 @@
           <div class="card  text-white bg-info " style="width: 14rem;">
              <div class="card-body">
                 <h5 class="card-title">Pending Requests</h5>
-                <h1> 5/16</h1>
+                <h1 id="req_pen"> 0</h1>
         </div>
         </div>
         </a>
@@ -38,7 +38,7 @@
           <div class="card  text-white bg-success " style="width: 14rem;">
              <div class="card-body">
                 <h5 class="card-title">Approved Requests</h5>
-                <h1> 5/16</h1>
+                <h1 id="req_app"> 0</h1>
         </div>
         </div>
         </a>
@@ -49,7 +49,7 @@
           <div class="card  text-white bg-danger " style="width: 14rem;">
              <div class="card-body">
                 <h5 class="card-title">Rejected Requests</h5>
-                <h1> 5/16</h1>
+                <h1 id="req_not"> 0</h1>
         </div>
         </div>
         </a>
@@ -95,16 +95,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="viewModalLabel">Responce Of Vehicle Request</h5>
+        <h5 class="modal-title" id="viewModalLabel">Responce Of Vehicle Request ID #<label id="req_id" name="req_id"></label></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
+      <label class="text-primary">Hello&nbsp;</label><label id="u_name"class="text-primary"></label><label class="text-primary"> &nbsp;your request has <label id="req_status" name="req_status" class="text-"></label></label>
       
-      <!-- <label id="res_id" name="res_id" style="display:none;" class="form-control"></label> -->
+      
 
-      <div class="form-group" style="padding-right: 20px; padding-left: 20px; padding-top: 20px;">
+      <div class="form-group" style="padding-right: 20px; padding-left: 20px; padding-top: 20px;" id="driver_nm">
         <label for="txt_driver_name">රියදුරුගේ නම</label>
         <!-- <input type="text" class="form-control" name="txt_aplicant_name" id="txt_aplicant_name"> -->
         <label id="txt_driver_name"class="form-control"></label>
@@ -176,9 +177,7 @@
         var reqData=[];
 
         $(document).ready(function(){
-
-        
-
+                
          // -------------------------------------------------------
         var op ="";
         $.ajaxSetup({
@@ -192,6 +191,10 @@
         url: '/dashboard_load',
         success: function(data){
         reqData=data;
+        var req_pen=0;
+        var req_app=0;
+        var req_not=0;
+
         for(var i=0;i<data.length;i++){
         op+='<tr>';
         op+='<td>'+data[i].datetime+'</td>'
@@ -199,20 +202,35 @@
         op+='<td>'+data[i].location+'</td>'
 
         if(data[i].status ==='Pending')
-        { op+='<td><button type="button" class="btn btn-sm btn-warning" disabled>'+data[i].status+'</button></td>'}
+        { 
+        op+='<td><button type="button" class="btn btn-sm btn-warning" disabled>'+data[i].status+'</button></td>'
+        req_pen++;
+
+        }
 
         else if(data[i].status ==='Approved')
-        { op+='<td><button type="button" class="btn btn-sm btn-success" disabled>'+data[i].status+'</button></td>'}
+        {
+        op+='<td><button type="button" class="btn btn-sm btn-success" disabled>'+data[i].status+'</button></td>'
+        req_app++;
+        }
         else
-        {op+='<td><button type="button" class="btn btn-sm btn-danger" disabled>'+data[i].status+'</button></td>'}
+        {
+        op+='<td><button type="button" class="btn btn-sm btn-danger" disabled>'+data[i].status+'</button></td>'
+        req_not++;
+        }
         
-        op+='<td><a href="" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal_requestByUser" data-responceid="'+data[i].responce_id+'" >View</i></a></td>'
+        op+='<td><a href="" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#viewModal_requestByUser" data-responceid="'+data[i].responce_id+'" data-reqid="'+data[i].id+'" data-u_name="'+data[i].name+'" data-req_status="'+data[i].status+'">View</i></a></td>'
         
         op+='</tr>';
 
         }
         $("#mdatatable tbody").append(op);
+        $('#mdatatable').DataTable();
         
+        $('#req_all').text(data.length)
+        $('#req_pen').text(req_pen+' / '+data.length)
+        $('#req_app').text(req_app+' / '+data.length)
+        $('#req_not').text(req_not+' / '+data.length)
         },
         error: function(data){
                 alert("error");
@@ -220,6 +238,11 @@
         }
         });
         // -------------------------------------------------------------
+//        setInterval(function(){
+//                $('#mdatatable tbody').reload();
+//        },1000);
+
+      
 
 });
 
@@ -227,7 +250,18 @@ $('#viewModal_requestByUser').on('show.bs.modal', function (event) {
   
   var button = $(event.relatedTarget) 
   var responce_id = button.data('responceid') 
-  
+  var request_id=button.data('reqid')
+  var user_name=button.data('u_name')
+  var req_status=button.data('req_status')
+  if(req_status=="Pending")
+  {
+          $('#driver_nm').hide();
+  }
+
+  $('#req_id').text(request_id);
+  $('#u_name').text(user_name);
+  $('#req_status').text(req_status);
+
   var modal = $(this)
 
   $.ajaxSetup({

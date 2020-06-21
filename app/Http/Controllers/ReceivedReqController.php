@@ -56,18 +56,27 @@ class RecievedReqController extends Controller
         // console.log("controller ok");
          $client = resolve('elections.client');
          $responsebranch= $client -> request('GET','request/GetRequestDetailsByReqId/'.$request->m_id);
- 
          $statuscodebranch=$responsebranch->getStatusCode();
          $bodybranch=$responsebranch->getBody()->getContents();
- 
          $Databranch=json_decode($bodybranch);
  
         // $Databranch="okkkkkkkkkkkkkk";
- 
+
+    
+//------------------------------get drivers names to model for approved process---------------------------------
+        // $driversname=$client->request('GET','Drivers/GetNameAndID');
+        // $statuscode=$driversname->getStatusCode();
+        // $bodydriversname=$driversname->getBody()->getContents();
+        // $Datadriversname=json_decode($bodydriversname);
+         //alert("controller okk");
+
          return response()->json($Databranch);
- 
- 
- 
+
+        //  return response::json(array(
+        //     'reD' => $Databranch,
+        //     'dri' => $Datadriversname,
+            
+        // ));
      }
  
 }
